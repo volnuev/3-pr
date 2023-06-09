@@ -1,0 +1,44 @@
+﻿@using shop.Data.ViewModell
+@model BasketViewModell
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Корзина";
+}
+
+<h1>Корзина</h1>
+
+@if (Model.BasketItems.Count == 0)
+{
+    <p>Корзина пуста.</p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Наименование</th>
+                <th>Описание</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.BasketItems)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.Count</td>
+                    <td>@item.Price</td>
+                    <td>@(item.Count * item.Price)</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+}
+
+<p><a href="/">Вернуться в магазин</a></p>

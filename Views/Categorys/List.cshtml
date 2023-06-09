@@ -1,0 +1,37 @@
+﻿@using shop.Data.ViewModell
+
+@model VMCategorys
+
+@{
+    Layout = "_Layout";
+
+}
+<h2>Все категории продуктов</h2>
+<script>
+        function SearchItems(sender) {
+            window.location = "/Categorys/List?searchTerm=" + sender.value;
+        }
+        function Add() {
+            window.location = "/Categorys/Add";
+        }
+        function Update(sender) {
+            window.location = "/Categorys/Update?id=" + sender.name;
+        }
+</script>
+@{
+
+    foreach (var categorys in Model.SearchTerm)
+    { <div class="categorys">
+            <img />
+            <div class="datac">
+                <h3>Категория: @categorys.Name</h3>
+                <p>Описание:@categorys.Description</p>
+            </div>
+            <input type="submit" value="Изменить" name="@categorys.Id" onclick="Update(this)" />
+            <form method="post" action="/Categorys/Delete">
+                <input type="hidden" name="id" value="@categorys.Id"/>
+                <input type="submit" value="Удалить"/>
+            </form>
+        </div>
+    }
+}

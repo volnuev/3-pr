@@ -1,0 +1,16 @@
+﻿@using shop.Data.ViewModell
+@model UpdateItemViewModel
+@{
+    Layout = "_Layout";
+}
+<form method="post" enctype="multipart/form-data">
+    <div>
+        Наименование:
+        <br /><input name="name" value="@Model.Categorys.Name" placeholder="Наименование:" />
+    </div>
+    <div>
+        Описание:
+        <br /><input name="description" value="@Model.Categorys.Description" placeholder="Описание:" />
+    </div>
+    <input type="submit" value="Обновить" />
+</form>
